@@ -23,11 +23,12 @@ public class ChatService {
     @Autowired
     private Environment environment;
 
-    private List<String> agricultureKeywords = Arrays.asList("cultivar", "plantação", "colheita", "solo", "irrigação");
+    private List<String> agricultureKeywords = Arrays.asList("cultivar", "plantação", "colheita", "solo", "irrigação", "clima");
 
     public String getApiKey() {
-        return environment.getProperty("gpt3.api.key");
+        return environment.getProperty("GPT3_API_KEY");
     }
+    
 
     public String getChatResponse(String userMessage) {
         String apiKey = getApiKey();
