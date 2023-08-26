@@ -28,7 +28,6 @@ public class ChatService {
     public String getApiKey() {
         return environment.getProperty("GPT3_API_KEY");
     }
-    
 
     public String getChatResponse(String userMessage) {
         String apiKey = getApiKey();
