@@ -5,6 +5,7 @@ import com.br.agrotechapi.service.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import java.nio.charset.StandardCharsets;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -65,20 +68,24 @@ public class ChatController {
 
         String responseBody = response.getBody();
 
-        // Salvar a pergunta e a resposta no banco de dados
         Response savedResponse = responseService.saveResponse(new Response(null, pergunta, responseBody));
 
         return responseBody;
     }
 
-    @GetMapping("/responses/{id}")
-    public ResponseEntity<String> getResponseById(@PathVariable Long id) {
-        Response response = responseService.getResponseById(id);
 
-        if (response != null) {
-            return ResponseEntity.ok(response.getAnswer());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+@GetMapping("/responses/{id}")
+public ResponseEntity<String> getResponseById(@PathVariable Long id) {
+    Response response = responseService.getResponseById(id);
+
+    if (response != null) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set(HttpHeaders.ACCEPT_CHARSET, StandardCharsets.UTF_8.name()); // Configurando a codificação UTF-8
+
+        return new ResponseEntity<>(response.getAnswer(), headers, HttpStatus.OK);
+    } else {
+        return ResponseEntity.notFound().build();
     }
+}
 }

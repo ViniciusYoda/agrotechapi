@@ -25,7 +25,7 @@ public class Response {
     private Long id;
     
     private String question;
-    @Column(length = 5000)
+    @Column(length = 4000)
     private String answer;
 
 }
