@@ -81,7 +81,7 @@ public ResponseEntity<String> getResponseById(@PathVariable Long id) {
     if (response != null) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set(HttpHeaders.ACCEPT_CHARSET, StandardCharsets.UTF_8.name()); // Configurando a codificação UTF-8
+        headers.set(HttpHeaders.ACCEPT_CHARSET, StandardCharsets.UTF_8.name()); 
 
         return new ResponseEntity<>(response.getAnswer(), headers, HttpStatus.OK);
     } else {
