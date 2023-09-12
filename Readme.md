@@ -5,6 +5,8 @@ Um App voltado para os Pequenos Produtores conseguirem ter acesso a tecnologia e
     <img src="./img/logo 500 sf.png"/>
 </h1>
 
+<p>Video: https://youtu.be/1UTbyKBKFaM</p>
+
 ---
 
 # Endpoints
