@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name = "Response")
+@Table(name = "TABELA_PROBLEMA")
 @Data
 @Builder
 @AllArgsConstructor
@@ -24,8 +24,8 @@ public class Response {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String question;
+    private String pergunta;
     @Column(length = 4000)
-    private String answer;
+    private String resposta;
 
 }
