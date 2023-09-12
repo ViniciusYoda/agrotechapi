@@ -12,16 +12,21 @@ Um App voltado para os Pequenos Produtores conseguirem ter acesso a tecnologia e
 - [AgTech](#agtech)
 - [Endpoints](#endpoints)
     - [Usuarios](#usuarios)
-        - [Cadastrar usuarios](#cadastrar-usuarios)
-        - [Logar usuario](#listar-usuario)
+        - [Cadastrar um Usuário](#cadastrar-usuarios)
+        - [Login de Usuário](#listar-usuario)
     - [Chats](#chats)
-        - [Listar chats](#listar-chats)
+        - [Enviar uma Pergunta](#enviar-pergunta)
+        - [Obter uma Resposta por ID](#obter-resposta)
     
 ---
 
 ## Usuarios
 
-### Cadastrar usuários
+### Cadastrar um Usuário
+
+Endpoint para cadastrar um novo usuário.
+
+**URL**
 
 `POST` /api/cadastrar
 
@@ -51,9 +56,9 @@ Um App voltado para os Pequenos Produtores conseguirem ter acesso a tecnologia e
 
 **Resposta de Sucesso**
 
-Código de Status: 201 Created
+`Código de Status:` 201 Created
 
-Corpo da Resposta: Um objeto JSON representando o usuário cadastrado.
+`Corpo da Resposta:` Um objeto JSON representando o usuário cadastrado.
 
 **Exemplo da Resposta**
 
@@ -67,7 +72,9 @@ Corpo da Resposta: Um objeto JSON representando o usuário cadastrado.
 }
 ```
 
-### Logar usuário
+### Login de Usuário
+
+Endpoint para autenticar um usuário e obter um token JWT.
 
 `POST` /api/login
 
@@ -93,9 +100,9 @@ Corpo da Resposta: Um objeto JSON representando o usuário cadastrado.
 
 **Resposta de Sucesso**
 
-Código de Status: 200 OK
+`Código de Status:` 200 OK
 
-Corpo da Resposta: Um token JWT para autenticação subsequente.
+`Corpo da Resposta:` Um token JWT para autenticação subsequente.
 
 **Exemplo da Resposta**
 
@@ -104,4 +111,92 @@ Corpo da Resposta: Um token JWT para autenticação subsequente.
   token: "seu-token-jwt-aqui"
 }
 ```
+
+## Chat
+
+### Enviar uma Pergunta
+
+Este endpoint permite que os usuários enviem uma pergunta para ser respondida pelo modelo de linguagem GPT-3.5 Turbo.
+
+**URL**
+
+`POST` /ask
+
+**Parâmetros de Entrada**
+
+`requestData`(tipo: JSON) - Um objeto JSON contendo a pergunta a ser enviada.
+
+**Campos da Requisição**
+
+|   campo  | tipo  | obrigatório | descrição                            |
+| -------- | ----- | :---------: | ------------------------------------ |
+| answer   | texto |     sim     | Resposta para o  usuário             |
+| question | texto |     sim     | Pergunta do usuário                  |
+
+**Exemplo de Requisição**
+
+```js
+{
+  question: "Como plantar milho?"
+}
+```
+
+**Resposta de Sucesso**
+
+`Código de Status:` 200 OK
+
+`Corpo da Resposta:` A resposta gerada pelo modelo GPT-3.5 Turbo.
+
+**Exemplo da Resposta**
+
+```js
+{
+  response: "Tenha um terreno, abra um buraco e plante o grão."
+}
+```
+
+### Obter uma Resposta por ID
+
+Este endpoint permite que os usuários obtenham uma resposta anteriormente gerada pelo modelo GPT-3.5 Turbo com base no ID da resposta.
+
+**URL**
+
+`GET` /responses/{id}
+
+**Parâmetros de Entrada**
+
+`id `(tipo: Long) - O ID da resposta que você deseja obter.
+
+**Campos da Requisição**
+
+|   campo  | tipo  | obrigatório | descrição                            |
+| -------- | ----- | :---------: | ------------------------------------ |
+| answer   | texto |     sim     | Resposta para o  usuário             |
+| question | texto |     sim     | Pergunta do usuário                  |
+
+**Exemplo de Requisição**
+
+`GET` /responses/123
+
+**Resposta de Sucesso**
+
+`Código de Status:` 200 OK
+
+`Corpo da Resposta:` A resposta gerada pelo modelo GPT-3.5 Turbo com base no ID especificado.
+
+**Exemplo da Resposta**
+
+```js
+{
+  response: "Tenha um terreno, abra um buraco e plante o grão."
+}
+```
+
+
+
+
+
+
+
+
 
