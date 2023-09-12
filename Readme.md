@@ -9,12 +9,12 @@ Um App voltado para os Pequenos Produtores conseguirem ter acesso a tecnologia e
 
 # Endpoints
 
-- [AgTech] (#agtech)
-- [Endpoints] (#endpoints)
-    -[Usuarios] (#usuarios)
+- [AgTech](#agtech)
+- [Endpoints](#endpoints)
+    - [Usuarios](#usuarios)
         - [Cadastrar usuarios](#cadastrar-usuarios)
         - [Logar usuario](#listar-usuario)
-    -[Chats] (#chats)
+    - [Chats](#chats)
         - [Listar chats](#listar-chats)
     
 ---
@@ -26,6 +26,7 @@ Um App voltado para os Pequenos Produtores conseguirem ter acesso a tecnologia e
 `POST` /api/cadastrar
 
 **Parâmetros de Entrada**
+
 `usuario` (tipo: JSON) - Um objeto JSON contendo os detalhes do usuário a ser cadastrado.
 
 **Campos da Requisição**
@@ -41,7 +42,6 @@ Um App voltado para os Pequenos Produtores conseguirem ter acesso a tecnologia e
 
 ```js
 {
-
  cpf:   "44877544550",
  email: "igor.cammargo@gmail.com",
  nome:  "Igor Camargo",
@@ -52,6 +52,7 @@ Um App voltado para os Pequenos Produtores conseguirem ter acesso a tecnologia e
 **Resposta de Sucesso**
 
 Código de Status: 201 Created
+
 Corpo da Resposta: Um objeto JSON representando o usuário cadastrado.
 
 **Exemplo da Resposta**
@@ -71,6 +72,7 @@ Corpo da Resposta: Um objeto JSON representando o usuário cadastrado.
 `POST` /api/login
 
 **Parâmetros de Entrada**
+
 `credencial` (tipo: JSON) - Um objeto JSON contendo as credenciais do usuário para login.
 
 **Campos da Requisição**
@@ -84,7 +86,6 @@ Corpo da Resposta: Um objeto JSON representando o usuário cadastrado.
 
 ```js
 {
-
  email: "igor.cammargo@gmail.com",
  senha: "123",
 }
@@ -93,6 +94,7 @@ Corpo da Resposta: Um objeto JSON representando o usuário cadastrado.
 **Resposta de Sucesso**
 
 Código de Status: 200 OK
+
 Corpo da Resposta: Um token JWT para autenticação subsequente.
 
 **Exemplo da Resposta**
