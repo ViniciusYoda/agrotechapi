@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Value;
+
 import java.nio.charset.StandardCharsets;
 
 import java.nio.charset.StandardCharsets;
@@ -28,7 +30,8 @@ import java.util.Map;
 @RestController
 public class ChatController {
 
-    private static final String API_KEY;
+    @Value("${api.key}")
+    private String API_KEY;
     private static final String INTRO_TEXT = "Você é um especialista em agricultura. Responda às seguintes perguntas sobre o assunto:";
 
     private final RestTemplate restTemplate;
@@ -40,7 +43,7 @@ public class ChatController {
         this.responseService = responseService;
     }
 
-    @PostMapping("/ask")
+    @PostMapping("/api/ask")
     public String askQuestion(@RequestBody Map<String, String> requestData) {
         String pergunta = requestData.get("quest");
         String quest = INTRO_TEXT + " " + pergunta;
