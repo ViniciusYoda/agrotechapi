@@ -26,6 +26,6 @@ public class Response {
     
     private String quest;
     @Column(length = 4000)
-    private String resposta;
+    private String answer;
 
 }

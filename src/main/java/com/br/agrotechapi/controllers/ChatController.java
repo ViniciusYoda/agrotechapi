@@ -30,8 +30,8 @@ import java.util.Map;
 @RestController
 public class ChatController {
 
-    @Value("${api.key}")
-    private String API_KEY;
+    //@Value("${api.key}")
+    private static final String API_KEY = "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";
     private static final String INTRO_TEXT = "Você é um especialista em agricultura. Responda às seguintes perguntas sobre o assunto:";
 
     private final RestTemplate restTemplate;
@@ -86,7 +86,7 @@ public ResponseEntity<String> getResponseById(@PathVariable Long id) {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set(HttpHeaders.ACCEPT_CHARSET, StandardCharsets.UTF_8.name()); 
 
-        return new ResponseEntity<>(response.getResposta(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(response.getAnswer(), headers, HttpStatus.OK);
     } else {
         return ResponseEntity.notFound().build();
     }
