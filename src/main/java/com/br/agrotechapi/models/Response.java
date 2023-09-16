@@ -24,7 +24,7 @@ public class Response {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String pergunta;
+    private String quest;
     @Column(length = 4000)
     private String resposta;
 

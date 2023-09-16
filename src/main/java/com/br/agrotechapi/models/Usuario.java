@@ -45,6 +45,7 @@ public class Usuario implements UserDetails {
    private String email;
 
    @NotBlank
+   @Size(min = 8)
    private String senha;
 
    @Override
