@@ -27,7 +27,7 @@ public class TokenJwtService {
    public JwtToken generateToken(Credencial credencial) {
        Algorithm alg = Algorithm.HMAC256(secret);
        var token = JWT.create()
-                   .withExpiresAt(Instant.now().plus(2, ChronoUnit.HOURS))
+                   .withExpiresAt(Instant.now().plus(1, ChronoUnit.DAYS))
                    .withSubject(credencial.email())
                    .withIssuer("Agrotech")
                    .sign(alg)

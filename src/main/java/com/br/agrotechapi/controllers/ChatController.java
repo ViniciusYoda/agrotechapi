@@ -77,18 +77,18 @@ public class ChatController {
     }
 
 
-@GetMapping("/responses/{id}")
-public ResponseEntity<String> getResponseById(@PathVariable Long id) {
-    Response response = responseService.getResponseById(id);
+    @GetMapping("/responses/{id}")
+    public ResponseEntity<String> getResponseById(@PathVariable Long id) {
+        Response response = responseService.getResponseById(id);
 
-    if (response != null) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set(HttpHeaders.ACCEPT_CHARSET, StandardCharsets.UTF_8.name()); 
+        if (response != null) {
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.set(HttpHeaders.ACCEPT_CHARSET, StandardCharsets.UTF_8.name()); 
 
-        return new ResponseEntity<>(response.getAnswer(), headers, HttpStatus.OK);
-    } else {
-        return ResponseEntity.notFound().build();
+            return new ResponseEntity<>(response.getAnswer(), headers, HttpStatus.OK);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
-}
 }
