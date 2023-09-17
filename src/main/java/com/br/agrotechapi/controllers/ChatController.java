@@ -30,8 +30,8 @@ import java.util.Map;
 @RestController
 public class ChatController {
 
-    //@Value("${api.key}")
-    private static final String API_KEY = "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";
+    @Value("${api.key}")
+    private String API_KEY;
     private static final String INTRO_TEXT = "Você é um especialista em agricultura. Responda às seguintes perguntas sobre o assunto:";
 
     private final RestTemplate restTemplate;
