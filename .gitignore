@@ -32,6 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 
-apikey.env
-apikey.txt
 config.properties
