@@ -77,7 +77,7 @@ public class ChatController {
     }
 
 
-    @GetMapping("/responses/{id}")
+    @GetMapping("/api/responses/{id}")
     public ResponseEntity<String> getResponseById(@PathVariable Long id) {
         Response response = responseService.getResponseById(id);
 
