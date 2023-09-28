@@ -44,18 +44,19 @@ public class SecurityConfig implements WebMvcConfigurer {
                .build();
    }
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**") 
-                    .allowedOrigins("http://localhost:19006") 
-                    .allowedMethods("GET", "POST", "PUT", "DELETE")
-                    .allowCredentials(true);
-            }
-        };
-    }
+   @Bean
+public WebMvcConfigurer corsConfigurer() {
+    return new WebMvcConfigurer() {
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/api/**")
+                .allowedOrigins("http://localhost:3000")
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowCredentials(true);
+        }
+    };
+}
+
 
    @Bean
    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception{
