@@ -33,6 +33,8 @@ public class SecurityConfig implements WebMvcConfigurer {
                .authorizeHttpRequests()
                    .requestMatchers(HttpMethod.POST, "/api/cadastrar").permitAll()
                    .requestMatchers(HttpMethod.POST, "/api/login").permitAll()
+                   .requestMatchers(HttpMethod.POST, "/api/ask").permitAll()
+                   .requestMatchers(HttpMethod.GET, "/api/responses").permitAll()
                    .requestMatchers("/v3/api-docs/**", "/swagger-ui/**").permitAll()
                    .anyRequest().authenticated()
                .and()
