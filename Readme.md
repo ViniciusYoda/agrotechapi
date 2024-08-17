@@ -9,7 +9,7 @@ Um App voltado para os Pequenos Produtores conseguirem ter acesso a tecnologia e
 
 ---
 
-# Para iniciar o projeto acesse src/main/resources/config.properties e coloca sua chave da api da Openai
+# Para iniciar o projeto acesse src/main/resources/config.properties e coloca sua chave da api da Openai:
 
 # Endpoints
 
